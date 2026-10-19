@@ -135,3 +135,10 @@ dialog{border:0;padding:0;border-radius:12px;color:var(--ink);background:var(--c
 @media (max-width:700px){.pj-g{grid-template-columns:1fr}.pj{aspect-ratio:16/9}}
 @media (max-width:560px){.svc-g,.steps,.row{grid-template-columns:1fr}.hd-in{height:68px}.logo svg{width:40px;height:40px}.logo b{font-size:1.2rem}.logo small{font-size:.8rem}.top-in{justify-content:center;text-align:center;font-size:.85rem}.cta .btn{width:100%}input,select,textarea{font-size:1rem}.svc{padding:22px;gap:18px}.hcap{padding:56px 18px 18px}.hcap::before{left:18px;bottom:18px;height:56px}}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{transition-duration:.01ms!important;animation:none!important}.zm:hover img,.svc:hover,.btn:hover{transform:none!important}.js .rv{opacity:1;transform:none}}
+/* introdução em vídeo */
+.intro{position:fixed;inset:0;z-index:100;background:#000;transition:opacity .45s ease}.intro.out{opacity:0;pointer-events:none}
+.intro video{width:100%;height:100%;object-fit:cover}
+@media (orientation:portrait){.intro video{object-fit:contain}}
+.intro-skip{position:absolute;right:max(20px,env(safe-area-inset-right));bottom:max(20px,env(safe-area-inset-bottom));min-height:44px;padding:0 20px;border:1px solid rgba(255,255,255,.55);border-radius:8px;background:rgba(10,12,11,.65);color:#fff;font-weight:600;cursor:pointer}
+.intro-skip:active{transform:scale(.97)}.intro :focus-visible{outline-color:var(--cu-d)}
+@media (hover:hover) and (pointer:fine){.intro-skip:hover{background:rgba(10,12,11,.85)}}

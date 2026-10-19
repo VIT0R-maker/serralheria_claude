@@ -2,6 +2,7 @@ import { useEffect, useState, type CSSProperties, type ReactNode } from 'react'
 import { Icon, Logo } from './Icon'
 import { Contact } from './Contact'
 import { Lightbox } from './Lightbox'
+import { Intro, shouldPlayIntro } from './Intro'
 import { benefits, nav, projects, quotes, services, steps } from './data'
 import hero from './assets/hero.webp'
 import about from './assets/about.webp'
@@ -166,6 +167,7 @@ const Footer = () => (
 export default function App() {
   const [service, setService] = useState('')
   const [lb, setLb] = useState<number | null>(null)
+  const [intro, setIntro] = useState(shouldPlayIntro)
 
   useEffect(() => { // revelação única ao entrar na viewport; sem IO, tudo permanece visível
     if (!('IntersectionObserver' in window)) return
@@ -190,7 +192,9 @@ export default function App() {
   }
 
   return (
-    <div id="top">
+    <>
+    {intro && <Intro onDone={() => setIntro(false)} />}
+    <div id="top" inert={intro}>
       <a className="skip" href="#main">Pular para o conteúdo</a>
       <div className="top"><div className="wrap top-in"><span>Projetos sob medida para residências e empresas</span><a className="lnk" href="#contato">Solicite seu orçamento</a></div></div>
       <Header />
@@ -200,5 +204,6 @@ export default function App() {
       <Footer />
       <Lightbox i={lb} set={setLb} />
     </div>
+    </>
   )
 }
